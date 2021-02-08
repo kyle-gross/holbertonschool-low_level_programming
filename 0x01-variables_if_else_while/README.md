@@ -11,3 +11,4 @@
 7-print_tebahpla.c	 - prints alphabet in reverse
 8-print_base16.c	 - prints all numbers of base 16
 9-print_comb.c		 - prints 0 - 9 separated by commas
+102-print_comb5.c	 - prints all combos of 2 2-digit numbers
