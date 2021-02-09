@@ -1,21 +1,14 @@
 #include "holberton.h"
-
 /**
- * main - checks if int r is lower or uppercase
+ * _islower - determines if character is uppercase or lowercase
+ * @c: The character to test
  *
- * Return: 0
+ * Return: 0 if true, 1 if false
  */
-
-int main(void)
+int _islower(int c)
 {
-	int r;
-
-	r = _islower('H');
-	putchar(r + '0');
-	r = _islower('o');
-	putchar(r + '0');
-	r = _islower(108);
-	putchar(r + '0');
-	putchar('\n');
-	return (0);
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	else
+		return (0);
 }
