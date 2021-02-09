@@ -1,4 +1,6 @@
 #holbertonschool-low_level_programming
-0x00-hello_world - first C project
-0x01-variables_if_else_while - C project involving if/else and while loops
+0x00-hello_world
+0x01-variables_if_else_while
 0x02-functions_nested_loops
+0x03-debugging
+README.md
