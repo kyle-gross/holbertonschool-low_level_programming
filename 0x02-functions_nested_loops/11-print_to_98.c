@@ -12,29 +12,29 @@ void print_to_98(int n)
 {
 	int c;
 
-	if (n <= 98)
+	if (n < 98)
 	{
 		for (c = n; c <= 98; c++)
 		{
-			printf("%d", c);
-
-			if (c != 98)
-				putchar(',');
-				putchar(' ');
+			if (c < 98)
+				printf("%d, ", c);
+			else
+				printf("98");
 		}
-		putchar('\n');
 	}
 
-	if (n > 98)
+	else if (n == 98)
+		printf("98");
+
+	else
 	{
 		for (c = n; c >= 98; c--)
 		{
-			printf("%d", c);
-
-			if (c != 98)
-				putchar(',');
-				putchar(' ');
+			if (c > 98)
+				printf("%d, ", c);
+			else
+				printf("98");
 		}
-		putchar('\n');
 	}
+	putchar('\n');
 }
