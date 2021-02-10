@@ -13,7 +13,7 @@
 void print_remaining_days(int month, int day, int year)
 {
 	/* Determine if leap year */
-	if (year % 4 == 0 || year % 400 == 0)
+	if (year % 4 == 0)
 	{
 		/* If February 29 or higher, add 1 day*/
 		if (month >= 2 && day >= 60)
