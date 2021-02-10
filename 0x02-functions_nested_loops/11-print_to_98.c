@@ -1,7 +1,10 @@
 #include <stdio.h>
 
 /**
+ * print_to_98 - prints to 98
+ * @n: starting point
  *
+ * Return: void
  */
 void print_to_98(int n)
 {
