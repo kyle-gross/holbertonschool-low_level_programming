@@ -38,13 +38,9 @@ void print_times_table(int n)
 					_putchar(v % 10 + '0');
 				}
 				else
-				{
 					_putchar(v % 10 + '0');
-				}
 				if (i == n)
-				{
 					break;
-				}
 				_putchar(',');
 				_putchar(' ');
 			}
