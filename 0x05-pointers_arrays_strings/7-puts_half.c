@@ -19,7 +19,7 @@ void puts_half(char *str)
 	}
 	else
 	{
-		hlen = (len - 1) / 2;
+		hlen = (len + 1) / 2;
 	}
 	for (; str[hlen] != '\0'; hlen++)
 	{
