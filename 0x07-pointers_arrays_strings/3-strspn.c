@@ -14,10 +14,10 @@ unsigned int _strspn(char *s, char *accept)
 	int i, ii, c = 0;
 
 	/* Loop through string s */
-	for (i = 0; s[i] != ','; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
 		/* Compare and count characters of accept to *s */
-		for (ii = 0; ii < _strlen(accept); ii++)
+		for (ii = 0; accept[ii] != '\0'; ii++)
 		{
 			if (s[i] == accept[ii])
 				c++;
