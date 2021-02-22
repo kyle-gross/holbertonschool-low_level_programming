@@ -21,8 +21,10 @@ unsigned int _strspn(char *s, char *accept)
 		/* Compare and count characters of accept to *s */
 		for (ii = 0; accept[ii] != '\0'; ii++)
 		{
+			/* If character matches accept, break loop and add to count */
 			if (s[i] == accept[ii])
 				break;
+			/* If character NOT stored in accept is encountered, return count */
 			if (!accept[ii + 1])
 				return (c);
 		}
