@@ -10,10 +10,12 @@
 unsigned int _strspn(char *s, char *accept)
 {
 	/* Declare and define variables */
-	unsigned int i, ii, c = 0;
+	unsigned int i = 0, ii, c = 0;
 
+	if (!accept[0])
+		return (c);
 	/* Loop through string s */
-	for (i = 0; s[i] != ','; i++)
+	for (; s[i] != ','; i++)
 	{
 		/* Compare and count characters of accept to *s */
 		for (ii = 0; accept[ii] != '\0'; ii++)
