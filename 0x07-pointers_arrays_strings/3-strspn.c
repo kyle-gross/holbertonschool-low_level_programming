@@ -12,6 +12,9 @@ unsigned int _strspn(char *s, char *accept)
 	/* Declare and define variables */
 	unsigned int i, ii, c = 0;
 
+	if (accept[0] == '\0')
+		return (c);
+
 	/* Loop through string s */
 	for (i = 0; s[i] != '\0'; i++)
 	{
