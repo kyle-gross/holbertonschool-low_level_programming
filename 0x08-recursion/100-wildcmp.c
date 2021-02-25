@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * patterncheck - verifies if * is encountered
+ * starcheck - verifies if * is encountered
  * @pattern: the string to check for *
  * @ii: iteration variable
  * Return: 1 if pattern = * or 0 if not a *
@@ -24,7 +24,7 @@ int starcheck(char *pattern, int ii)
  * @pattern: input pattern
  * Return: 1 if string matches pattern 0 if not
  */
-int cmp (int i, int ii, char *str, char *pattern)
+int cmp(int i, int ii, char *str, char *pattern)
 {
 	if (pattern[ii] == '*')
 		return (cmp(i, ii + 1, str, pattern));
