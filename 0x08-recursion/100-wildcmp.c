@@ -26,15 +26,13 @@ int starcheck(char *pattern, int ii)
  */
 int cmp (int i, int ii, char *str, char *pattern)
 {
-	/* If * is encountered */
 	if (pattern[ii] == '*')
 		return (cmp(i, ii + 1, str, pattern));
-	/* If */
 	if (str[i] != pattern[ii])
 	{
 		if (str[i] == '\0')
 			return (0);
-		else if (starcheck(pattern, ii - 1) == 1)
+		else if (starcheck(pattern, --ii) == 1)
 			return (cmp(i + 1, ii, str, pattern));
 		return (0);
 	}
