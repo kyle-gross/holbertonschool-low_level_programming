@@ -2,6 +2,22 @@
 #include <stdlib.h>
 
 /**
+ * numcheck - verifies that the string contains only numbers
+ * @s: the string to check
+ * Return 1 if numbers only - 0 if not
+ */
+int numcheck(char *s)
+{
+	while (*s)
+	{
+		if (!(*s >= '0' && *s <= '9'))
+			return (0);
+		s++;
+	}
+	return (1);
+}
+
+/**
  * main - generates sum of input numbers
  * @argc: the number of arguments
  * @argv: the array which stores arguments
@@ -18,7 +34,7 @@ int main(int argc, char *argv[])
 	}
 	for (i = 1; i < argc; i++)
 	{
-		if (*argv[i] >= '0' || *argv[i] <= '9')
+		if (numcheck(argv[i]) == 1)
 			sum += atoi(argv[i]);
 		else
 		{
