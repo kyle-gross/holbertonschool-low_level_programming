@@ -20,8 +20,11 @@ int **alloc_grid(int width, int height)
 		return (NULL);
 
 	for (; i < width; i++)
+	{
 		arr[i] = (int *)malloc(width * sizeof(int));
-
+		if (arr[i] == NULL)
+			return (NULL);
+	}
 	/* Initialize array to 0's */
 	for (i = 0; i < height; i++)
 	{
