@@ -15,9 +15,6 @@ char *_strdup(char *str)
 
 	dup = (char *)malloc(_strlen(str) + 1);
 
-	if (dup == NULL)
-		return (NULL);
-
 	while (str[i])
 	{
 		dup[i] = str[i];
@@ -28,6 +25,11 @@ char *_strdup(char *str)
 	return (dup);
 }
 
+/**
+ * _strlen - counts length of a string
+ * @s: the string to count
+ * Return: Length of string
+ */
 int _strlen(char *s)
 {
 	int i = 0;
