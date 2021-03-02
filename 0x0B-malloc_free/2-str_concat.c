@@ -34,11 +34,16 @@ char *str_concat(char *s1, char *s2)
 	return (cat);
 }
 
-int _strlen(char *str)
+/**
+ * _strlen - counts a string
+ * @s: the string
+ * Return: number of chars in string
+ */
+int _strlen(char *s)
 {
 	int i = 0;
 
-	while (str[i] != '\0')
+	while (s[i] != '\0')
 		i++;
 
 	return (i);
