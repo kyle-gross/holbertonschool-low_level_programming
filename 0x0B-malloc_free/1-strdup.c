@@ -13,15 +13,27 @@ char *_strdup(char *str)
 	if (str == NULL)
 		return (NULL);
 
-	while (str[i])
-		i++;
+	dup = (char *)malloc(_strlen(str) + 1);
 
-	dup = (char *)malloc(i);
-	i = 0;
+	if (dup == NULL)
+		return (NULL);
+
 	while (str[i])
 	{
 		dup[i] = str[i];
 		i++;
 	}
+	dup[i] = '\0';
+
 	return (dup);
+}
+
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (s[i] != '\0')
+		i++;
+
+	return (i);
 }
