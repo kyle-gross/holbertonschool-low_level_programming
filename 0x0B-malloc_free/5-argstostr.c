@@ -33,8 +33,8 @@ char *argstostr(int ac, char **av)
 			ii++;
 			n++;
 		}
-			s[n] = '\n';
-			n++;
+		s[n] = '\n';
+		n++;
 	}
 	s[n] = '\0';
 	return (s);
