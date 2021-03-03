@@ -16,10 +16,10 @@ char *argstostr(int ac, char **av)
 
 	for (i = 0; i < ac; i++)
 	{
-		size += (int)sizeof(av[i]);
+		size += _strlen(av[i]) + 1;
 	}
 
-	s = malloc(size + 1);
+	s = (char *)malloc(size * sizeof(char) + 1);
 
 	if (s == NULL)
 		return (NULL);
@@ -38,4 +38,18 @@ char *argstostr(int ac, char **av)
 	}
 	s[n] = '\0';
 	return (s);
+}
+
+/**
+ * _strlen - counts a string
+ * @s: string
+ * Return: count
+ */
+int _strlen(char *s)
+{
+	int i;
+
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
