@@ -9,18 +9,13 @@
  */
 int main(int argc, char *argv[])
 {
-	int a, b, pmath;
+	int (*pmath)(int a, int b);
+	int a, b, math;
 
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
-	}
-	if ((argv[2][0] != '+' || argv[2][0] != '-' || argv[2][0] != '*'
-			|| argv[2][0] != '/' || argv[2][0] != '%') && argv[2][1] != '\0')
-	{
-		printf("Error\n");
-		exit(99);
 	}
 	if (argv[3][0] == '0' && (argv[2][0] == '/' || argv[2][0] == '%'))
 	{
@@ -29,7 +24,13 @@ int main(int argc, char *argv[])
 	}
 	a = atoi(argv[1]);
 	b = atoi(argv[3]);
-	pmath = get_op_func(argv[2])(a, b);
-	printf("%d\n", pmath);
+	pmath = get_op_func(argv[2]);
+	if (pmath == NULL)
+	{
+		printf("Error\n");
+		exit(99);
+	}
+	math = pmath(a, b);
+	printf("%d\n", math);
 	return (0);
 }
