@@ -52,15 +52,13 @@ void print_all(const char * const format, ...)
 {
 	va_list ap;
 	int i = 0, ii = 0, valid_args = arg_count(format);
-	char fmat;
 
 	if (format != NULL)
 	{
 		va_start(ap, format);
 		while (format[i])
 		{
-			fmat = format[i];
-			switch (fmat)
+			switch (format[i])
 			{
 				case 'c':
 					printf("%c%s", (char)va_arg(ap, int),
@@ -86,6 +84,6 @@ void print_all(const char * const format, ...)
 			i++;
 		}
 	}
-	printf("\n");
 	va_end(ap);
+	printf("\n");
 }
