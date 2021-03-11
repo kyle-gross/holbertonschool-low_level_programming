@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 		if (i < numbytes - 1)
 			printf(" ");
 		/* Increment ptr */
-		ptr ++;
+		ptr++;
 	}
 	/* Add new line */
 	printf("\n");
