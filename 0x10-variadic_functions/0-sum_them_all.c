@@ -3,7 +3,7 @@
 #include <stdarg.h>
 /**
  * sum_them_all - sums all parameters
- * @n:
+ * @n: number of args
  * Return: Sum of parameters
  */
 int sum_them_all(const unsigned int n, ...)
