@@ -61,7 +61,7 @@ void print_all(const char * const format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					printf("%c%s", (char)va_arg(ap, int),
+					printf("%c%s", va_arg(ap, int),
 							COMMA_SPACE(valid_args, ii));
 					ii++;
 					break;
@@ -71,7 +71,7 @@ void print_all(const char * const format, ...)
 					ii++;
 					break;
 				case 'f':
-					printf("%f%s", (float)va_arg(ap, double),
+					printf("%f%s", va_arg(ap, double),
 							COMMA_SPACE(valid_args, ii));
 					ii++;
 					break;
