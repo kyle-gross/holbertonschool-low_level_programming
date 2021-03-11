@@ -12,16 +12,18 @@ void print_strings(const char *separator, const unsigned int n, ...)
 {
 	va_list ap;
 	unsigned int i;
+	char *tmp;
 
 	if (n != 0)
 	{
 		va_start(ap, n);
 		for (i = 0; i < n; i++)
 		{
-			if (va_arg(ap, char *) == NULL)
-				printf("(nil)");
+			tmp = va_arg(ap, char *);
+			if (tmp == NULL)
+				printf("%p", tmp);
 			else
-				printf("%s", va_arg(ap, char *));
+				printf("%s", tmp);
 			if (separator != NULL && i != n - 1)
 				printf("%s", separator);
 		}
