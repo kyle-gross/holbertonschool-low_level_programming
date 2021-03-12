@@ -3,18 +3,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 /**
- * string_check - checks a string for null
- * @s: the string
- * Return: (nil) or string
- */
-char *string_check(char *s)
-{
-	if (s == NULL)
-		return ("(nil)");
-	return (s);
-}
-/**
- * print_all - prints anything
+ * print_all - prints a char, string, float, or integer
  * @format: list (in string form) of arguments passed to function
  * Return: void
  */
@@ -22,6 +11,7 @@ void print_all(const char * const format, ...)
 {
 	va_list ap;
 	unsigned int i = 0, ii = 0;
+	char *sptr;
 
 	if (format != NULL)
 	{
@@ -43,7 +33,14 @@ void print_all(const char * const format, ...)
 					ii++;
 					break;
 				case 's':
-					printf("%s%s", COMMA_SPACE(ii), string_check(va_arg(ap, char *)));
+					sptr = va_arg(ap, char *);
+					if (sptr == NULL)
+					{
+						printf("%s%p", COMMA_SPACE(ii), sptr);
+						ii++;
+						break;
+					}
+					printf("%s%s", COMMA_SPACE(ii), sptr);
 					ii++;
 					break;
 			}
