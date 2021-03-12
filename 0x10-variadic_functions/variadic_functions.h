@@ -13,7 +13,7 @@ void print_float(va_list);
 
 /* STRUCT */
 /**
- * format_specifiers - format specifiers
+ * struct format_specifiers - format specifiers
  * @s: letter to compare
  * @f: function pointer
  */
