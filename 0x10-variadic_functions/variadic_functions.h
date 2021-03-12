@@ -7,7 +7,16 @@ void print_numbers(const char *separator, const unsigned int n, ...);
 void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
 
-/* Macros */
-#define COMMA_SPACE(s) ((s) > 0 ? ", " : "") 
+/* STRUCT */
+/**
+ * format_specifiers - format specifiers
+ * @s: letter to compare
+ * @f: function pointer
+ */
+typedef struct format_specifiers
+{
+	char *s;
+	void (*f)();
+} spec_t;
 
 #endif
