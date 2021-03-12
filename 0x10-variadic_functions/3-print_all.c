@@ -2,10 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
-void print_char(va_list list);
-void print_string(va_list list);
-void print_int(va_list list);
-void print_float(va_list list);
 /**
  * print_all - prints a character, string, integer, or float
  * @format: string of arguments passed to function
