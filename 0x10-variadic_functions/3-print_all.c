@@ -14,36 +14,6 @@ char *string_check(char *s)
 	return (s);
 }
 /**
- * arg_count - counts valid arguments
- * @s: string to examine
- * Return: # of valid args
- */
-int arg_count(const char * const s)
-{
-	int i = 0, count = 0;
-
-	while (s[i])
-	{
-		switch (s[i])
-		{
-			case 'c':
-				count++;
-				break;
-			case 'i':
-				count++;
-				break;
-			case 'f':
-				count++;
-				break;
-			case 's':
-				count++;
-				break;
-		}
-		i++;
-	}
-	return (count);
-}
-/**
  * print_all - prints anything
  * @format: list (in string form) of arguments passed to function
  * Return: void
@@ -51,7 +21,7 @@ int arg_count(const char * const s)
 void print_all(const char * const format, ...)
 {
 	va_list ap;
-	unsigned int i = 0, ii = 0, valid_args = arg_count(format);
+	unsigned int i = 0, ii = 0/*, valid_args = arg_count(format)*/;
 
 	if (format != NULL)
 	{
@@ -61,23 +31,19 @@ void print_all(const char * const format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					printf("%c%s", va_arg(ap, int),
-							COMMA_SPACE(valid_args, ii));
+					printf("%s%c", COMMA_SPACE(ii), va_arg(ap, int));
 					ii++;
 					break;
 				case 'i':
-					printf("%d%s", va_arg(ap, int),
-							COMMA_SPACE(valid_args, ii));
+					printf("%s%d", COMMA_SPACE(ii), va_arg(ap, int));
 					ii++;
 					break;
 				case 'f':
-					printf("%f%s", va_arg(ap, double),
-							COMMA_SPACE(valid_args, ii));
+					printf("%s%f", COMMA_SPACE(ii), va_arg(ap, double));
 					ii++;
 					break;
 				case 's':
-					printf("%s%s", string_check(va_arg(ap, char *)),
-							COMMA_SPACE(valid_args, ii));
+					printf("%s%s", COMMA_SPACE(ii), string_check(va_arg(ap, char *)));
 					ii++;
 					break;
 			}
