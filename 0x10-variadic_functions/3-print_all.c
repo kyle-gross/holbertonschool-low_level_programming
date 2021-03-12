@@ -56,7 +56,7 @@ void print_all(const char * const format, ...)
 	if (format != NULL)
 	{
 		va_start(ap, format);
-		while (format[i])
+		while (format && (format[i]))
 		{
 			switch (format[i])
 			{
