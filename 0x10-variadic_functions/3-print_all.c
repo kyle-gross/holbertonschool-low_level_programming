@@ -51,12 +51,12 @@ int arg_count(const char * const s)
 void print_all(const char * const format, ...)
 {
 	va_list ap;
-	int i = 0, ii = 0, valid_args = arg_count(format);
+	unsigned int i = 0, ii = 0, valid_args = arg_count(format);
 
 	if (format != NULL)
 	{
 		va_start(ap, format);
-		while (format[i])
+		while (format && format[i])
 		{
 			switch (format[i])
 			{
