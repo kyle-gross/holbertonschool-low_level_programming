@@ -21,12 +21,12 @@ char *string_check(char *s)
 void print_all(const char * const format, ...)
 {
 	va_list ap;
-	unsigned int i = 0, ii = 0/*, valid_args = arg_count(format)*/;
+	unsigned int i = 0, ii = 0;
 
 	if (format != NULL)
 	{
 		va_start(ap, format);
-		while (format && format[i])
+		while (format[i])
 		{
 			switch (format[i])
 			{
