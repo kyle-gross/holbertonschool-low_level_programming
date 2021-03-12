@@ -8,6 +8,6 @@ void print_strings(const char *separator, const unsigned int n, ...);
 void print_all(const char * const format, ...);
 
 /* Macros */
-#define COMMA_SPACE(i, ii) ((ii) < (i - 1) ? ", " : "") 
+#define COMMA_SPACE(s) ((s) > 0 ? ", " : "") 
 
 #endif
