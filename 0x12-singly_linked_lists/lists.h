@@ -1,5 +1,5 @@
-#ifndef LISTS
-#define LISTS
+#ifndef LISTS_H
+#define LISTS_H
 
 /* INCLUDES */
 #include <stdlib.h>
@@ -25,5 +25,6 @@ typedef struct list_s
 /* PROTOTYPES */
 int _putchar(char c);
 size_t print_list(const list_t *h);
+size_t list_len(const list_t *h);
 
 #endif
