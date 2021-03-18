@@ -7,10 +7,11 @@
  */
 size_t print_list(const list_t *h)
 {
-	int i = 0;
 	size_t count = 0;
 
-	for (i = 0; h->next != NULL; i++)
+	if (!h)
+		return (count);
+	while (h->next != NULL)
 	{
 		count++;
 		if (h->str)
