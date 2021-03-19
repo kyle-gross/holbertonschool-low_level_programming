@@ -10,4 +10,5 @@ main:
 	mov edi, fmt
 	mov eax, 0
 	call printf
-ret 0
+	mov eax, 0
+ret
