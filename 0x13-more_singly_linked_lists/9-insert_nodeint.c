@@ -51,6 +51,8 @@ size_t listint_len(const listint_t *h)
 	count++;
 	return (count);
 }
+#ifndef HELPER_FUNCS
+#define HELPER_FUNCS
 /**
  * add_nodeint_end - adds a node to the end of a list
  * @head: pointer to head of list
@@ -95,3 +97,4 @@ listint_t *add_nodeint(listint_t **head, const int n)
 	*head = temp;
 	return (temp);
 }
+#endif
