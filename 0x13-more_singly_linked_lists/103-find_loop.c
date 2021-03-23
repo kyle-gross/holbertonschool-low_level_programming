@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * find_loop - finds a cycle in a linked list
+ * find_listint_loop - finds a cycle in a linked list
  * @head: pointer to list
  * Return: address where cycle starts or NULL if no loop
  */
