@@ -16,9 +16,9 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	if (!new_node)
 		return (NULL);
 	if (idx == 0)
-		new_node = add_nodeint(head, n);
+		new_node = new_add_nodeint(head, n);
 	else if (idx == listint_len(*head) - 1)
-		new_node = add_nodeint_end(head, n);
+		new_node = new_add_nodeint_end(head, n);
 	else
 	{
 		new_node->n = n;
@@ -51,15 +51,13 @@ size_t listint_len(const listint_t *h)
 	count++;
 	return (count);
 }
-#ifndef HELPER_FUNCS
-#define HELPER_FUNCS
 /**
  * add_nodeint_end - adds a node to the end of a list
  * @head: pointer to head of list
  * @n: new integer
  * Return: new node or NULL if failed
  */
-listint_t *add_nodeint_end(listint_t **head, const int n)
+listint_t *new_add_nodeint_end(listint_t **head, const int n)
 {
 	listint_t *temp, *traverse;
 
@@ -85,7 +83,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
  * @n: number to add to list
  * Return: new node or NULL if fail
  */
-listint_t *add_nodeint(listint_t **head, const int n)
+listint_t *new_add_nodeint(listint_t **head, const int n)
 {
 	listint_t *temp;
 
