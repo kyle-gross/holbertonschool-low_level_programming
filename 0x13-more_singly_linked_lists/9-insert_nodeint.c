@@ -9,26 +9,38 @@
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	listint_t *trav, *new_node;
-	unsigned int temp_index = 0;
 
-	if (!*head)
+	if (idx >= listint_len(*head))
 		return (NULL);
-	trav = *head;
-	while (temp_index < idx)
-	{
-		trav = trav->next;
-		if (temp_index + 1 < idx && trav->next == NULL)
-			return (NULL);
-		temp_index++;
-	}
 	new_node = malloc(sizeof(listint_t));
 	if (!new_node)
 		return (NULL);
 	new_node->n = n;
-	new_node->next = trav;
 	trav = *head;
-	for (temp_index = 0; temp_index < idx - 1; temp_index++)
+	while (--idx)
+	{
 		trav = trav->next;
+	}
+	new_node->next = trav->next;
 	trav->next = new_node;
 	return (new_node);
+}
+/**
+ * listint_len - returns the length of a linked list
+ * @h: pointer to head of list
+ * Return: the number of nodes
+ */
+size_t listint_len(const listint_t *h)
+{
+	size_t count = 0;
+
+	if (!h)
+		return (count);
+	while (h->next != NULL)
+	{
+		count++;
+		h = h->next;
+	}
+	count++;
+	return (count);
 }
