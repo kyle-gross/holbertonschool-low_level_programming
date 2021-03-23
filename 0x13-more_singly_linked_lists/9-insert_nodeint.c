@@ -29,7 +29,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	listint_t *trav, *new_node;
 	unsigned int temp_index = 0;
 
-	if (idx >= listint_len(*head))
+	if (idx > listint_len(*head))
 		return (NULL);
 	new_node = malloc(sizeof(listint_t));
 	if (!new_node)
