@@ -7,7 +7,7 @@
 const listint_t *cyclecheck(const listint_t *head)
 {
 	const listint_t *slow, *fast;
-	
+
 	slow = head;
 	fast = head;
 	while (slow && fast && fast->next)
