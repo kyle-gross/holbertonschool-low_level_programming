@@ -8,7 +8,7 @@ listint_t *find_listint_loop(listint_t *head)
 {
 	listint_t *slow, *fast;
 
-	if (!head)
+	if (!*head)
 		return (NULL);
 	slow = head;
 	fast = head;
