@@ -37,23 +37,23 @@ size_t free_listint_safe(listint_t **h)
 	listint_t *temp, *trav, *temp2 = NULL;
 	size_t count = 0, findstart = 0;
 
-	trav = *h;
 	temp2 = cyclecheck2(*h);
+	trav = *h;
 	if (h)
 	{
-		while (*h)
+		while (trav)
 		{
 			if (temp2)
 			{
-				if (temp == temp2 && findstart == 0)
+				if (trav == temp2 && findstart == 0)
 					findstart = 1;
-				if (temp == temp2 && findstart == 1)
-					break;
 			}
 			temp = trav->next;
 			free(trav);
 			trav = temp;
 			count++;
+			if (trav == temp2 && findstart == 1)
+				break;
 		}
 	}
 	*h = NULL;
