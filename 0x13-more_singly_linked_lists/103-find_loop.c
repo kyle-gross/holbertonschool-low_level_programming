@@ -20,9 +20,9 @@ listint_t *find_listint_loop(listint_t *head)
 			while (slow != head)
 			{
 				slow = slow->next;
-				head = head->next;
+				fast = fast->next;
 			}
-			return (head);
+			return (fast);
 		}
 	}
 	return (NULL);
