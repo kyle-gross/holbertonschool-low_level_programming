@@ -56,8 +56,6 @@ size_t print_listint_safe(const listint_t *head)
 
 	if (!head)
 		return (count);
-	if (!*head)
-		exit(98);
 	temp2 = cyclecheck(head);
 	temp = head;
 	while (temp)
