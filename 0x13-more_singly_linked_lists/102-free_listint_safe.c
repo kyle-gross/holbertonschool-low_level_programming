@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * cyclecheck - checks for cycle in linked list
+ * cyclecheck2 - checks for cycle in linked list
  * @head: pointer to list
  * Return: 0 if success 1 if fail
  */
@@ -34,10 +34,10 @@ listint_t *cyclecheck2(listint_t *head)
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *temp, *temp2 = NULL;
+	listint_t *temp, *trav, *temp2 = NULL;
 	size_t count = 0, findstart = 0;
 
-	temp = *h;
+	trav = *h;
 	temp2 = cyclecheck2(*h);
 	if (h)
 	{
@@ -50,9 +50,9 @@ size_t free_listint_safe(listint_t **h)
 				if (temp == temp2 && findstart == 1)
 					break;
 			}
-			*h = (*h)->next;
-			free(temp);
-			temp = *h;
+			temp = trav->next;
+			free(trav);
+			trav = temp;
 			count++;
 		}
 	}
