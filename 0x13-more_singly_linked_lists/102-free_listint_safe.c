@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * dupcheck - checks for duplicate address
+ * dupcheck2 - checks for duplicate address
  * @arr: array of addresses
  * @temp: temp pointer from function
  * Return: 0 if no duplicate, 1 if there is a duplicate
