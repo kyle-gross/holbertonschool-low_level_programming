@@ -43,14 +43,15 @@ size_t free_listint_safe(listint_t **h)
 	{
 		while (trav)
 		{
+			if (temp2)
+				if (trav == temp2 && findstart == 0)
+					findstart = 1;
 			temp = trav->next;
 			free(trav);
 			trav = temp;
 			count++;
 			if (trav == temp2 && findstart == 1)
 				break;
-			if (trav == temp2 && findstart == 0)
-				findstart = 1;
 		}
 	}
 	*h = NULL;
