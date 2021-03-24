@@ -5,7 +5,7 @@
  * @temp: temp pointer from function
  * Return: 0 if no duplicate, 1 if there is a duplicate
  */
-int dupcheck(const listint_t **arr, const listint_t *temp)
+int dupcheck2(listint_t **arr, listint_t *temp)
 {
 	int i;
 
@@ -35,9 +35,10 @@ size_t free_listint_safe(listint_t **h)
 			*h = (*h)->next;
 			free(temp);
 			count++;
-			if (dupcheck(arr, (*h)->next) == 1)
+			if (dupcheck2(arr, *h) == 1)
 				break;
 		}
 	}
+	*h = NULL;
 	return (count);
 }
