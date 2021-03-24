@@ -15,9 +15,34 @@ const listint_t *cyclecheck(const listint_t *head)
 		slow = slow->next;
 		fast = fast->next->next;
 		if (slow == fast)
-			return (slow->next);
+		{
+			fast = head;
+			while (slow != fast)
+			{
+				slow = slow->next;
+				fast = fast->next;
+			}
+			return (fast);
+		}
 	}
 	return (NULL);
+}
+/**
+ * dupcheck - checks for duplicate address
+ * @arr: array of addresses
+ * @temp: temp pointer from function
+ * Return: 0 if no duplicate, 1 if there is a duplicate
+ */
+int dupcheck(const listint_t **arr, const listint_t *temp)
+{
+	size_t i;
+
+	for (i = 0; arr[i]; i++)
+	{
+		if (temp == arr[i])
+			return (1);
+	}
+	return (0);
 }
 /**
  * print_listint_safe - prints a listint_t list
@@ -26,7 +51,7 @@ const listint_t *cyclecheck(const listint_t *head)
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *temp, *temp2 = NULL;
+	const listint_t *temp, *temp2 = NULL, *arr[2000];
 	size_t count = 0;
 
 	if (!head)
@@ -36,8 +61,9 @@ size_t print_listint_safe(const listint_t *head)
 	while (temp)
 	{
 		printf("[%p] %d\n", (void *)temp, temp->n);
+		arr[count] = temp;
 		count++;
-		if (temp == temp2)
+		if (dupcheck(arr, temp->next) == 1)
 			break;
 		temp = temp->next;
 	}
