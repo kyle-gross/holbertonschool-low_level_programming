@@ -55,9 +55,11 @@ size_t print_listint_safe(const listint_t *head)
 	size_t count = 0;
 
 	if (!head)
-		return (98);
+		return (count);
 	temp2 = cyclecheck(head);
 	temp = head;
+	if (!temp)
+		exit (98);
 	while (temp)
 	{
 		printf("[%p] %d\n", (void *)temp, temp->n);
@@ -68,9 +70,6 @@ size_t print_listint_safe(const listint_t *head)
 		temp = temp->next;
 	}
 	if (temp2)
-	{
 		printf("-> [%p] %d\n", (void *)temp2, temp2->n);
-		return (98);
-	}
 	return (count);
 }
