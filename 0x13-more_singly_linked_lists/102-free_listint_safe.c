@@ -1,20 +1,31 @@
 #include "lists.h"
 /**
- * dupcheck2 - checks for duplicate address
- * @arr: array of addresses
- * @temp: temp pointer from function
- * Return: 0 if no duplicate, 1 if there is a duplicate
+ * cyclecheck - checks for cycle in linked list
+ * @head: pointer to list
+ * Return: 0 if success 1 if fail
  */
-int dupcheck2(listint_t **arr, listint_t *temp)
+listint_t *cyclecheck2(listint_t *head)
 {
-	int i;
+	listint_t *slow, *fast;
 
-	for (i = 0; arr[i]; i++)
+	slow = head;
+	fast = head;
+	while (slow && fast && fast->next)
 	{
-		if (temp == arr[i])
-			return (1);
+		slow = slow->next;
+		fast = fast->next->next;
+		if (slow == fast)
+		{
+			fast = head;
+			while (slow != fast)
+			{
+				slow = slow->next;
+				fast = fast->next;
+			}
+			return (fast);
+		}
 	}
-	return (0);
+	return (NULL);
 }
 /**
  * free_listint_safe - frees a list that contains a loop
@@ -23,20 +34,26 @@ int dupcheck2(listint_t **arr, listint_t *temp)
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *temp, *arr[2000];
-	size_t count = 0;
+	listint_t *temp, *temp2 = NULL;
+	size_t count = 0, findstart = 0;
 
+	temp = *h;
+	temp2 = cyclecheck2(*h);
 	if (h)
 	{
 		while (*h)
 		{
-			temp = *h;
-			arr[count] = temp;
+			if (temp2)
+			{
+				if (temp == temp2 && findstart == 0)
+					findstart = 1;
+				if (temp == temp2 && findstart == 1)
+					break;
+			}
 			*h = (*h)->next;
 			free(temp);
+			temp = *h;
 			count++;
-			if (dupcheck2(arr, *h) == 1)
-				break;
 		}
 	}
 	*h = NULL;
