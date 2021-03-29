@@ -27,6 +27,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int i, ii, t1, t2, idx = 0, sum = 0, carry = 0;
 	char temp[2000];
 
+	if (!n1 && !n2)
+		return (0);
 	for (i = _strlen(n1) - 1, ii = _strlen(n2) - 1; ; i--, ii--)
 	{
 		t1 = n1[i] - '0';
