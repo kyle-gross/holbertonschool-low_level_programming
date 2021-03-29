@@ -27,8 +27,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int i, ii, t1, t2, idx = 0, sum = 0, carry = 0;
 	char temp[2000];
 
-	if (!n1 && !n2)
-		return (0);
 	for (i = _strlen(n1) - 1, ii = _strlen(n2) - 1; ; i--, ii--)
 	{
 		t1 = n1[i] - '0';
@@ -46,8 +44,10 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	}
 	temp[idx] = '\0';
 	if (carry > 0)
-		r[0] = carry + '0';
-	for (i = 1, ii = _strlen(temp) - 1; ii >= 0; i++, ii--)
+		r[0] = carry + '0', i = 1;
+	else
+		i = 0;
+	for (ii = _strlen(temp) - 1; ii >= 0; i++, ii--)
 	{
 		r[i] = temp[ii];
 		if (i + 1 >= size_r)
