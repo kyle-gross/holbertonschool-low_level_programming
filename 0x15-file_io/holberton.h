@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <errno.h>
 
 /* FUNCTION PROTOTYPES */
 int _putchar(char c);
