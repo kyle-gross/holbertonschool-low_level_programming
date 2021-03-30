@@ -20,7 +20,7 @@ int _strlen(char *s)
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fd, len;
+	int fd, len, writecheck = 0;
 
 	if (!filename)
 		return (-1);
@@ -33,7 +33,12 @@ int create_file(const char *filename, char *text_content)
 		return (1);
 	}
 	len = _strlen(text_content);
-	write(fd, text_content, len);
+	writecheck = write(fd, text_content, len);
+	if (writecheck == -1)
+	{
+		close(fd);
+		return (-1);
+	}
 	close(fd);
 	return (1);
 }
