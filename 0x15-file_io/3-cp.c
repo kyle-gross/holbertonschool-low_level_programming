@@ -4,11 +4,11 @@
  * @s: the string
  * Return: count
  */
-int _strlen(char *s)
+ssize_t _strlen(char *s)
 {
-	int count = 0;
+	ssize_t count = 0;
 
-	while (s && s[count])
+	while (s[count] != '\0')
 		count++;
 	return (count);
 }
@@ -20,16 +20,35 @@ int _strlen(char *s)
  * @buf: buffer
  * Return: return val of read
  */
-int loopydoo(int readval, int fd, int fd1, char *buf)
+void loopydoo(int readval, int fd, int fd1, char *buf, char *str)
 {
+	ssize_t writecheck = 0;
 
-	write(fd1, buf, _strlen(buf));
+	while (readval == 1024)
+	{
+		writecheck = write(fd1, buf, _strlen(buf));
+		if (writecheck == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", str);
+			close(fd);
+			close(fd1);
+			exit(99);
+		}
+		free(buf);
+		buf = malloc(1024);
+		if (!buf)
+			exit(0);
+		readval = read(fd, buf, 1024);
+	}
+	writecheck = write(fd1, buf, _strlen(buf));
+	if (writecheck == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", str);
+		close(fd);
+		close(fd1);
+		exit(99);
+	}
 	free(buf);
-	buf = malloc(1024);
-	if (!buf)
-		return (0);
-	readval = read(fd, buf, 1024);
-	return (readval);
 }
 /**
  * main - copies content of a file to another file
@@ -40,7 +59,7 @@ int loopydoo(int readval, int fd, int fd1, char *buf)
 int main(int argc, char *argv[])
 {
 	char *buf;
-	int fd, fd1, readval, closeval;
+	int fd, fd1, readval = 1, closeval;
 
 	if (argc != 3)
 	{
@@ -53,19 +72,17 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	fd1 = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, 0664);
+	fd1 = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY, 0664);
 	if (fd1 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
+		close(fd), exit(99);
 	}
 	buf = malloc(1024);
 	if (!buf)
 		return (0);
 	readval = read(fd, buf, 1024);
-	while (readval != 0)
-		readval = loopydoo(readval, fd, fd1, buf);
-	free(buf);
+	loopydoo(readval, fd, fd1, buf, argv[2]);
 	closeval = close(fd);
 	if (closeval == -1)
 	{
