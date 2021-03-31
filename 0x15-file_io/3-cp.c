@@ -18,6 +18,7 @@ ssize_t _strlen(char *s)
  * @fd: file descriptor 1
  * @fd1: file descriptor 2
  * @buf: buffer
+ * @str: argv[2]
  * Return: return val of read
  */
 void loopydoo(int readval, int fd, int fd1, char *buf, char *str)
