@@ -1,57 +1,5 @@
 #include "holberton.h"
 /**
- * _strlen - string length
- * @s: the string
- * Return: count
- */
-ssize_t _strlen(char *s)
-{
-	ssize_t count = 0;
-
-	while (s[count] != '\0')
-		count++;
-	return (count);
-}
-/**
- * loopydoo - does loop stuff
- * @readval: stores return val of read
- * @fd: file descriptor 1
- * @fd1: file descriptor 2
- * @buf: buffer
- * @str: argv[2]
- * Return: return val of read
- */
-void loopydoo(int readval, int fd, int fd1, char *buf, char *str)
-{
-	ssize_t writecheck = 0;
-
-	while (readval == 1024)
-	{
-		writecheck = write(fd1, buf, _strlen(buf));
-		if (writecheck == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", str);
-			close(fd);
-			close(fd1);
-			exit(99);
-		}
-		free(buf);
-		buf = malloc(1024);
-		if (!buf)
-			exit(0);
-		readval = read(fd, buf, 1024);
-	}
-	writecheck = write(fd1, buf, _strlen(buf));
-	if (writecheck == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", str);
-		close(fd);
-		close(fd1);
-		exit(99);
-	}
-	free(buf);
-}
-/**
  * main - copies content of a file to another file
  * @argc: # of command line args
  * @argv: stores command line args in string form
@@ -59,8 +7,8 @@ void loopydoo(int readval, int fd, int fd1, char *buf, char *str)
  */
 int main(int argc, char *argv[])
 {
-	char *buf;
-	int fd, fd1, readval = 1, closeval;
+	char buf[1024];
+	int fd, fd1, readval, closeval, writecheck;
 
 	if (argc != 3)
 	{
@@ -79,22 +27,20 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		close(fd), exit(99);
 	}
-	buf = malloc(1024);
-	if (!buf)
-		return (0);
-	readval = read(fd, buf, 1024);
-	loopydoo(readval, fd, fd1, buf, argv[2]);
+	while ((readval = read(fd, buf, 1024)) > 0)
+	{
+		writecheck = write(fd1, buf, readval);
+		if (writecheck == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			close(fd), close(fd1), exit(99);
+		}
+	}
 	closeval = close(fd);
 	if (closeval == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd), exit(100);
 	closeval = close(fd1);
 	if (closeval == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
-		exit(100);
-	}
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1), exit(100);
 	return (0);
 }
