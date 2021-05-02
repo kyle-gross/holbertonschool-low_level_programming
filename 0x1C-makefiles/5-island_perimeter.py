@@ -11,6 +11,8 @@ def island_perimeter(grid):
     """
     Let's find the perimeter of an island! :D
     """
+    if grid is None:
+        return 0
     perim = 0
     # Loop through grid and look around when 1's are encountered
     # If there's 0's or matrix edge around a 1, perimeter increases
