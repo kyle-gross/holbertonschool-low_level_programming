@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-"""
-This function returns the perimeter of an island
-1 represents land and 0 represents water
-grid: matrix of 0's and 1's
-Return: perimeter of island
-"""
-
-
 def island_perimeter(grid):
+    """
+    This function returns the perimeter of an island
+    1 represents land and 0 represents water
+    grid: matrix of 0's and 1's
+    Return: perimeter of island
+    """
     perim = 0
     # Loop through grid and look around when 1's are encountered
     # If there's 0's or matrix edge around a 1, perimeter increases
