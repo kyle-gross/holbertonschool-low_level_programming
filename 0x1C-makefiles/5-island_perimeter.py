@@ -24,15 +24,18 @@ def island_perimeter(grid):
     """ Loop through grid and look around when 1's are encountered
      If there's 0's or matrix edge around a 1, perimeter increases
     """
-    for row in range(row_len):
-        for col in range(col_len):
-            if grid[row][col] == 1:
-                if grid[row - 1][col] == 0:
-                    perim += 1
-                if grid[row + 1][col] == 0:
-                    perim += 1
-                if grid[row][col - 1] == 0:
-                    perim += 1
-                if grid[row][col + 1] == 0:
-                    perim += 1
+    try:
+        for row in range(row_len):
+            for col in range(col_len):
+                if grid[row][col] == 1:
+                    if grid[row - 1][col] == 0:
+                        perim += 1
+                    if grid[row + 1][col] == 0:
+                        perim += 1
+                    if grid[row][col - 1] == 0:
+                        perim += 1
+                    if grid[row][col + 1] == 0:
+                        perim += 1
+    except IndexError:
+        continue
     return perim
