@@ -20,7 +20,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		pair = pair->next;
 
 	if (!pair || !pair || strcmp(key, pair->key) != 0)
-		return NULL;
+		return (NULL);
 	else
-		return pair->value;
+		return (pair->value);
 }
