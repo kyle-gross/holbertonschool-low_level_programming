@@ -43,11 +43,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	bin = key_index((const unsigned char *)key, ht->size);
 	next = ht->array[bin];
-	while (next && next->key && strcmp(key, next->key) > 0)
-	{
-		last = next;
-		next = next->next;
-	}
 	if (next && next->key && strcmp(key, next->key) == 0)
 	{
 		free(next->value);
