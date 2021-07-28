@@ -37,19 +37,17 @@ hash_node_t *ht_newpair(const char *key, const char *value)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int bin = 0;
-	hash_node_t *newpair = NULL;
-	hash_node_t *next = NULL;
-	hash_node_t *last = NULL;
+	hash_node_t *newpair = NULL, *next = NULL, *last = NULL;
 
+	if (!ht)
+		return (0);
 	bin = key_index((const unsigned char *)key, ht->size);
 	next = ht->array[bin];
-
-	while (next != NULL && next->key != NULL && strcmp(key, next->key) > 0)
+	while (next && next->key && strcmp(key, next->key) > 0)
 	{
 		last = next;
 		next = next->next;
 	}
-
 	if (next && next->key && strcmp(key, next->key) == 0)
 	{
 		free(next->value);
