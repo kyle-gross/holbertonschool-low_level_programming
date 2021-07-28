@@ -3,6 +3,8 @@
 
 /* INCLUDES */
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 /* STRUCTS */
 /**
