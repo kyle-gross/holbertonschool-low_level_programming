@@ -45,17 +45,11 @@ int binary_search(int *array, size_t size, int value)
 		m = (l + r) / 2;
 
 		if (array[m] == value)
-		{
 			return (m);
-		}
 		if (array[m] < value)
-		{
 			l = m + 1;
-		}
 		else
-		{
 			r = m - 1;
-		}
 	}
 	return (-1);
 }
